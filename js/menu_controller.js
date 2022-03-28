@@ -6,6 +6,10 @@ function start_game(){
 	loadpage("./html/game.html");
 }
 
+function phaser_game(){
+	loadpage("./html/phasergame.html");
+}
+
 function exit (){
 	if (name != ""){
 		alert("Leaving " + name + "'s game");
@@ -17,4 +21,7 @@ function options(){
 	loadpage("./html/options.html");
 }
 
+function load(){
+	loadpage("./html/load.html");
+}
 

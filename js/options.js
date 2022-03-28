@@ -4,7 +4,7 @@ var options = function(){
 		cards:2, dificulty:"hard"
 	};
 	var load = function(){
-		var json = localStorage.getItem("config","{'cards':2,'dificulty':'hard'}");
+		var json = localStorage.getItem("config") || '{"cards":2,"dificulty":"hard"}';
 		options_data = JSON.parse(json);
 	};
 	var save = function(){
@@ -55,12 +55,6 @@ var options = function(){
 		}
 	}; 
 }();
-
-console.log(options.getOptionsString());
-console.log(options.getNumOfCards());
-console.log(options.getDificulty());
-console.log(options.options_data);
-
 
 
 
