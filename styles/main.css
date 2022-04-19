@@ -9,16 +9,31 @@ input[type=number]{
 #title{
 	font-size: 26px;
 	line-height: 75px;
+	font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	background: local;
+	color: white;
+	background-color:rgb(43, 42, 44);
+}
+
+body{
+	background-color: white;
+	background-image: -webkit-radial-gradient(center , circle cover, rgb(255, 255, 255) 0%, rgb(209, 208, 208) 70%);
+	min-height: calc(100vh - 30px);
+	margin: 0;
+	text-align: center;
 }
 
 .menu-object{
-	display:block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 300px;
-	height: 75px;
+	display: grid;
+	grid-template-columns: 5 em;
+	grid-template-rows: 5 em;
+	justify-content: center;
 	font-size: 16px;
-	margin-top: 10px;
+	font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	padding: 20px 80px;
+	color: black;
+	font-weight: 500;
+	transition: color 0.5s, background 0.5s;
 }
 
 p{
@@ -37,3 +52,34 @@ button.menu-object:hover:not(:active){
 	height: 85px;
 }
 
+#cartas{
+	text-align: center;
+}
+
+.btn-container{
+	padding-top: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.menu-object.border{
+	border-radius: 30px;
+}
+
+.menu-object.color{
+	background-color: transparent;
+	border: 2px solid rgb(204, 41, 114);
+	color: rgb(204, 41, 114);
+}
+
+.menu-object.color:hover{
+	/*rgb(43, 42, 44);*/
+	color: white;
+	border: 2px solid rgb(255, 167, 207);
+	background-color: rgb(43, 42, 44);
+	font-size: 18px;
+	width: 275px;
+	height: 70px;
+}
