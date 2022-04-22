@@ -10,11 +10,16 @@ function phaser_game(){
 	loadpage("./html/phasergame.html");
 }
 
+function play(){
+	loadpage("./play.html");
+}
+
 function exit (){
 	if (name != ""){
 		alert("Leaving " + name + "'s game");
 	}
 	name = "";
+	loadpage("../index.html");
 }
 
 function options(){

@@ -2,14 +2,29 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="../styles/main.css">
-		<script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
 		<script src="../js/loader.js"></script>
-		<script src="../js/scenes/game.js"></script>
+		<script src="../js/game_info.js"></script>
+		<script src="../js/menu_controller.js"></script>
 		<script src="../js/phasergame_controller.js"></script>
 		<title> My first game - PhaserIO Game </title>
 	</head>
 	<body>
-		<div id = "game_area"> </div>
+		<p class="menu-object" id="title">Memory menu</p>
+		<div class="menu-object">
+			<button class="menu-object border color" onclick="play()"> 
+				Mode 1
+			</button>
+		</div>
+		<div class="menu-object">
+			<button class="menu-object border color" onclick=""> 
+				Mode 2 
+			</button>
+		</div>
+		<div class="menu-object">
+			<button class="menu-object border color" onclick="exit()"> 
+				Exit 
+			</button>
+		</div>
 	</body>
 </html>
 
