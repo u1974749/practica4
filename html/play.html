@@ -11,6 +11,21 @@
 	<body>
 		<p class="menu-object" id="title">Memory menu</p>
 		<div id = "game_area"> </div>
+		<p class="menu-object" id="title">Is playing {{username}}</p>
+		<p class="menu-object" id="title" v-if="score_text <= 0"> You Lose </p>
+		<p class="menu-object" id="title" v-else-if="num_cards <= 0">
+			You WIN!!! with {{score_text}} points
+		</p>
+		<div v-else>
+			<img v-for="(card, indx) in current_card" :src="card.texture" v-on:click="clickCard(indx)">
+			<div class="menu-object">
+				<button class="menu-object border color" v-on:click="save"> Save </button>
+			</div>
+		</div>
+	</div>
+	<div class="menu-object">
+		<button class="menu-object color border"  onclick="loadpage('./phasergame.html')">GoToMenu</button>
+	</div>
 	</body>
 </html>
 

@@ -70,14 +70,14 @@ button.menu-object:hover:not(:active){
 
 .menu-object.color{
 	background-color: transparent;
-	border: 2px solid rgb(204, 41, 114);
-	color: rgb(204, 41, 114);
+	border: 2px solid rgb(255, 187, 50);
+	color: rgb(255, 156, 50);
 }
 
 .menu-object.color:hover{
 	/*rgb(43, 42, 44);*/
 	color: white;
-	border: 2px solid rgb(255, 167, 207);
+	border: 2px solid rgb(250, 191, 108);
 	background-color: rgb(43, 42, 44);
 	font-size: 18px;
 	width: 275px;
