@@ -14,10 +14,3 @@ var config = {
 };
 
 var game = new Phaser.Game(config);
-
-function play(){
-	loadpage("../html/play.html");
-}
-function buttonPractice(){
-	loadpage("./buttons_controller.js");
-}

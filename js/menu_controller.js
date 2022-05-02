@@ -26,3 +26,14 @@ function load(){
 	loadpage("./html/load.html");
 }
 
+function play(){
+	name = prompt("User name");
+	
+	sessionStorage.setItem("username", name);
+	
+	loadpage("../html/playPhaser.html");
+}
+function optionsPhaser(){
+	loadpage("../html/optionsPhaser.html");
+}
+
