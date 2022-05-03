@@ -1,11 +1,14 @@
 var options = function(){
 	// Aquí dins hi ha la part privada de l'objecte
 	var options_data = {
-		cards:2, dificulty:"hard"
+		cards:3, dificulty:"hard"
 	};
 	var load = function(){
-		var json = localStorage.getItem("config") || '{"cards":2,"dificulty":"hard"}';
-		options_data = JSON.parse(json);
+		var json = localStorage.getItem("config","{'cards':2,'dificulty':'hard'}");
+		if(json)
+		{
+			options_data = JSON.parse(json);
+		}
 	};
 	var save = function(){
 		localStorage.setItem("config", JSON.stringify(options_data));

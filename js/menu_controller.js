@@ -33,7 +33,12 @@ function play(){
 	
 	loadpage("../html/playPhaser.html");
 }
+
 function optionsPhaser(){
 	loadpage("../html/optionsPhaser.html");
+}
+
+function loadPhaser(){
+	loadpage("../html/loadPhaser.html");
 }
 
