@@ -1,5 +1,3 @@
-//import { getRandomInt } from './random.js';
-
 var options_data = {
 	cards:2, dificulty:"hard"
 };
@@ -22,8 +20,8 @@ class GameScene extends Phaser.Scene {
 		this.firstClick = null;
 		this.score = 100;
 		this.correct = 0;
-		this.numCards = 2;
-		this.level = "normal";
+		this.numCards = 2; //numero de cartas elegidas por el usuario 
+		this.level = "normal"; //nivel elegido por el usuario 
     }
 
     preload (){	
@@ -42,17 +40,18 @@ class GameScene extends Phaser.Scene {
 
 		
 		//let arraycards = ['co', 'sb', 'co', 'sb','so','so','tb','tb'];
-		let arraycards = ['cb', 'co', 'sb', 'so', 'tb', 'to'];
+		let arraycards = ['cb', 'co', 'sb', 'so', 'tb', 'to']; //array con todos los tipos de cartas
 
-		this.cameras.main.setBackgroundColor(0xBFFCFF);
+		this.cameras.main.setBackgroundColor(0xBFFCFF); //fondo
 		
-		arraycards.sort(function(){return Math.random() - 0.5});
-		this.numCards = options_data.cards;
-		this.level = options_data.dificulty;
-		arraycards = arraycards.slice(0,this.numCards);
-		arraycards = arraycards.concat(arraycards);
-		arraycards.sort(function(){return Math.random() - 0.5});
+		arraycards.sort(function(){return Math.random() - 0.5}); //mueve los tipos de cartas aleatoriamente
+		this.numCards = options_data.cards; // iguala el numCards al numero de cartas elegidas por el usuario
+		this.level = options_data.dificulty; // iguala el nivel al nivel elegido por el usuario
+		arraycards = arraycards.slice(0,this.numCards); // coge la cantidad de cartas determinadas por el numCards
+		arraycards = arraycards.concat(arraycards); // duplica las cartas elegidas para formar parejas
+		arraycards.sort(function(){return Math.random() - 0.5}); // mueve los tipos de cartas aleatoriamente
 
+		// dependiendo de la cantidad de cartas se ajusta la variable position que determina la posicion de las cartas
 		if(arraycards.length == 4)
 		{
 			var position = 200;
@@ -65,13 +64,14 @@ class GameScene extends Phaser.Scene {
 		{
 			var position = 0;
 		}
-		for (var j = 0; j < arraycards.length; j++){
+		for (var j = 0; j < arraycards.length; j++){ // inserta las cartas
 			this.add.image((position+50), 300, arraycards[j]);
 			position += 100;
 		}
 
 		this.cards = this.physics.add.staticGroup();
 
+		// dependiendo de la cantidad de cartas se ajusta la variable position que determina la posicion de las cartas
 		if(arraycards.length == 4)
 		{
 			var position = 200;
@@ -85,7 +85,7 @@ class GameScene extends Phaser.Scene {
 			var position = 0;
 		}
 
-		for (var j = 0; j < arraycards.length; j++){
+		for (var j = 0; j < arraycards.length; j++){ // coloca el back de las cartas
 			this.cards.create((position+50), 300, 'back');
 			position += 100;
 		}
@@ -101,6 +101,7 @@ class GameScene extends Phaser.Scene {
 					if (this.firstClick.card_id !== card.card_id){
 						console.log(this.level);
 						console.log(this.score);
+						// dependiendo del nivel reduce mas o menos la cantidad de puntos
 						if(this.level == "easy")
 						{
 							this.score -= 5;
