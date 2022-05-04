@@ -34,6 +34,14 @@ function play(){
 	loadpage("../html/playPhaser.html");
 }
 
+function playMode2(){
+	name = prompt("User name");
+	
+	sessionStorage.setItem("username", name);
+	
+	loadpage("../html/playPhaserMode2.html");
+}
+
 function optionsPhaser(){
 	loadpage("../html/optionsPhaser.html");
 }

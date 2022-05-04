@@ -1,27 +1,12 @@
-var options_data = {
-	cards:2, dificulty:"hard"
-};
-
-var load = function(){
-	var json = localStorage.getItem("config","{'cards':2,'dificulty':'hard'}");
-	if(json)
-	{
-		options_data = JSON.parse(json);
-	} 
-};
-
-load();
-
-class GameScene extends Phaser.Scene {
+class GameMode extends Phaser.Scene {
     constructor (){
-        super('GameScene');
+        super('GameMode');
 		//username = '';
 		this.cards = null;
 		this.firstClick = null;
 		this.score = 100;
 		this.correct = 0;
-		this.numCards = 2; //numero de cartas elegidas por el usuario 
-		this.level = "normal"; //nivel elegido por el usuario 
+		this.numCards = 4; //numero de cartas elegidas por el usuario 
     }
 
     preload (){	
@@ -36,14 +21,15 @@ class GameScene extends Phaser.Scene {
 	
     create (){	
 		this.username = sessionStorage.getItem("username","unknown");
+		//let arraycards = ['co', 'sb', 'co', 'sb'];
 
+		
+		//let arraycards = ['co', 'sb', 'co', 'sb','so','so','tb','tb'];
 		let arraycards = ['cb', 'co', 'sb', 'so', 'tb', 'to']; //array con todos los tipos de cartas
 
 		this.cameras.main.setBackgroundColor(0xBFFCFF); //fondo
 		
 		arraycards.sort(function(){return Math.random() - 0.5}); //mueve los tipos de cartas aleatoriamente
-		this.numCards = options_data.cards; // iguala el numCards al numero de cartas elegidas por el usuario
-		this.level = options_data.dificulty; // iguala el nivel al nivel elegido por el usuario
 		arraycards = arraycards.slice(0,this.numCards); // coge la cantidad de cartas determinadas por el numCards
 		arraycards = arraycards.concat(arraycards); // duplica las cartas elegidas para formar parejas
 		arraycards.sort(function(){return Math.random() - 0.5}); // mueve los tipos de cartas aleatoriamente
@@ -65,9 +51,9 @@ class GameScene extends Phaser.Scene {
 			this.add.image((position+50), 300, arraycards[j]);
 			position += 100;
 		}
-		
+
 		this.cards = this.physics.add.staticGroup();
-		
+
 		// dependiendo de la cantidad de cartas se ajusta la variable position que determina la posicion de las cartas
 		if(arraycards.length == 4)
 		{
@@ -81,24 +67,13 @@ class GameScene extends Phaser.Scene {
 		{
 			var position = 0;
 		}
-		// dependiendo del nivel reduce mas o menos el tiempo
-		var showtime = 5000;
-		if(this.level == "normal")
-		{
-			showtime = 2500;
-		}
-		else if(this.level == "hard")
-		{
-			showtime = 1000;
-		}
-
+		var showtime = 1000;
 		setTimeout (()=>{
 			for (var j = 0; j < arraycards.length; j++){ // coloca el back de las cartas
 				this.cards.create((position+50), 300, 'back');
 				position += 100;
-				console.log(j);
 			}
-		
+			
 			let i = 0;
 			this.cards.children.iterate((card)=>{
 				card.card_id = arraycards[i];
@@ -108,50 +83,49 @@ class GameScene extends Phaser.Scene {
 					card.disableBody(true,true);
 					if (this.firstClick){
 						if (this.firstClick.card_id !== card.card_id){
-							// dependiendo del nivel reduce mas o menos la cantidad de puntos
-							if(this.level == "easy")
-							{
-								this.score -= 5;
-							}
-							else if(this.level == "normal")
-							{
-								this.score -= 10;
-							}
-							else if(this.level == "hard")
-							{
-								this.score -= 20;
-							}
-							console.log("campeon");
+							
+							this.score -= 20;
 							
 							this.firstClick.enableBody(false, 0, 0, true, true);
 							card.enableBody(false, 0, 0, true, true);
 							
-							/*setTimeout (()=>{
-								for (var i = 0; i < arraycards.length; i++){
-									Vue.set(card, i, {done: false, texture:arraycards[i]}); //gira las cartas para ponerlas boca abajo
+							//for (var i = 0; i < arraycards.length; i++){
+							//	this.card[i].setVisible(false); //gira las cartas para ponerlas boca arriba
+							//}
+							//setTimeout (()=>{
+								console.log("Tobe");
+								console.log("Fly");
+								if (this.score <= 0){
+									alert("Game Over");
+									console.log("High");
+									loadpage("./phasergame.html");
 								}
-							}, showtime)*/
-							if (this.score <= 0){
-								alert("Game Over");
-								loadpage("./phasergame.html");
-							}
+								console.log("ase");
+							//}, showtime)
 						}
 						else{
+							console.log("to");
 							this.correct++;
-							if (this.correct >= options_data.cards){
+							if (this.correct >= 4){
+								console.log("chitto");
 								alert("You Win with " + this.score + " points.");
-								loadpage("./phasergame.html");
+								loadpage("./playPhaserMode2.html");
+								console.log("namidade");
 							}
 						}
 						this.firstClick = null;
+						console.log("hikaru");
 					}
 					else{
+						console.log("tsubasa");
 						this.firstClick = card;
 					}
+					console.log("de");
 				}, card);
 			});
-		}, 1000);
+		}, showtime)
 	}
+	
 	update (){	}
 }
 

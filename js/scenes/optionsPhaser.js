@@ -41,7 +41,7 @@ var options = function(){
 				options_data.cards = this.num;
 				options_data.dificulty = this.dificulty;
 				save();
-				loadpage("../phasergame.html");
+				loadpage("./phasergame.html");
 			}
 		}
 	});
