@@ -15,7 +15,8 @@ var gameObj = function (){
 			current_card: [],
 			items: [],
 			num_cards: 2,
-			bad_clicks: 0
+			bad_clicks: 0,
+			score: 0
 		},
 		created: function(){
 			if (l_partida){

@@ -114,7 +114,7 @@ class GameMode extends Phaser.Scene {
 							}
 						}
 						this.firstClick = null;
-						console.log("hikaru");
+						console.log("hikari");
 					}
 					else{
 						console.log("tsubasa");

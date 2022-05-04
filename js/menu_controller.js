@@ -50,3 +50,7 @@ function loadPhaser(){
 	loadpage("../html/loadPhaser.html");
 }
 
+function scorePhaser(){
+	loadpage("../html/scorePhaser.html");
+}
+

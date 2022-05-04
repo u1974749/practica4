@@ -121,11 +121,12 @@ class GameScene extends Phaser.Scene {
 							{
 								this.score -= 20;
 							}
-							console.log("campeon");
 							
 							this.firstClick.enableBody(false, 0, 0, true, true);
 							card.enableBody(false, 0, 0, true, true);
 							
+							//FALTA GIRAR LAS CARTAS CUANDO HAY UN ERROR
+							//
 							/*setTimeout (()=>{
 								for (var i = 0; i < arraycards.length; i++){
 									Vue.set(card, i, {done: false, texture:arraycards[i]}); //gira las cartas para ponerlas boca abajo
@@ -140,6 +141,17 @@ class GameScene extends Phaser.Scene {
 							this.correct++;
 							if (this.correct >= options_data.cards){
 								alert("You Win with " + this.score + " points.");
+								let partida = {
+									username: this.username,
+									score: this.score
+								}
+								let arrayPartides = [];
+								if(localStorage.partides){
+									arrayPartides = JSON.parse(localStorage.partides);
+									if(!Array.isArray(arrayPartides)) arrayPartides = [];
+								} //GUARDA LA PARTIDA TERMINADA CON LA PUNTUACION
+								arrayPartides.push(partida);
+								localStorage.partides = JSON.stringify(arrayPartides);
 								loadpage("./phasergame.html");
 							}
 						}
